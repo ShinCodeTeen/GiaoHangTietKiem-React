@@ -1,0 +1,240 @@
+#LocalPage{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#LocalPage .select_user{
+    border: 1px solid #ccc;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 3px 7px 5px #000;
+    width: 600px;
+
+}
+#LocalPage .select_user h2,h3{
+    width: 100%;
+    text-align: center;
+   
+}
+#LocalPage .options{
+    width: 100%;
+    margin-top: 20px;
+    flex-direction: column;
+    padding-left: 17%;
+   
+}
+#LocalPage .options .opt_user{
+    border: 1px solid #ccc;
+    height: 40px;
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    border-radius: 15px;
+    background-color: #b8bdbb;
+    color: #fff;
+    filter: drop-shadow(2px 5px 1px rgb(46, 43, 43));
+    transition: filter 0.15s ease-in-out;
+
+    outline: none;
+}
+#LocalPage .options .opt_user:hover{
+    background-color: #01904A;
+    cursor: pointer;
+    border: none;
+    filter: drop-shadow(1px 7px 1px rgb(5, 236, 82));
+}
+#LocalPage .options .opt_user:active{
+    filter: none;
+}
+#LocalPage .options a{
+    text-decoration: none;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+   
+}
+
+/* Header Login Page */
+
+#h1-Content{
+    color: aquamarine;
+}
+
+#header_lg{
+    width: 100%;
+    height: 93px;
+    background-color: #01904A;
+    display: flex;
+    align-items: center;
+}
+#header_lg img{
+    height: 93px;
+    width: 160px;
+    object-fit: contain;
+    
+    margin-left: 170px;
+}
+#header_lg .username_input{
+    margin-left: 250px;
+}
+#header_lg input{
+    height: 35px;
+    width: 300px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    right: 20px;
+    padding-left: 10px;
+    color: #4b4b4b;
+    font-size: 15px;
+}
+#header_lg input:focus{
+    outline: #f39191;
+    border-color:#f39191 ;
+}
+
+#header_lg a{
+    color: #fff;
+    font-size: 12px;
+    position: absolute;
+    left: 920px;
+    top: 60px;
+    
+}
+#header_lg a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+#header_lg button{
+    color:#333333;
+    height: 35px;
+    width: 100px;
+    background-color: #fff;
+    outline: none;
+    border-color: #fff;
+    border-radius: 7px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+  
+}
+#header_lg button:hover{
+    background-color: #e0dddd;
+    border-color: #e0dddd;
+}
+
+/* Content Login Page */
+
+#content_lg{
+    width: 100%;
+    display: flex;
+    
+}
+#content_lg .intro_content{
+    margin-left: 140px;
+    width: 400px;
+}
+#content_lg .intro_content h1{
+    margin-left: 10px;
+}
+#content_lg .intro_content ul{
+    list-style-type: none;
+}
+#content_lg .intro_content li {
+   padding-top: 15px;
+   margin-left: 20px;
+}
+
+#content_lg .register{
+    display: block;
+    margin-left: 60px;
+    width: 820px;
+}
+#content_lg .register input{
+    height: 43px;
+    width: 745px;
+    margin-bottom: 20px;
+    border-color: #b8b2b2;
+    border-radius: 7px;
+    outline: none;
+    padding-left: 15px;
+    font-size: 17px;
+    border-width: 1px;
+}
+#content_lg .register input:focus{
+    outline-color: #fff;
+    border-color:#8fc8f6 ;
+    border-width: 2px;
+}
+#content_lg .register button{
+    height: 43px;
+    width: 740px;
+    margin-left: 5px;
+    border-radius: 7px;
+    border-color: #e0dddd;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #01904A;
+}
+#content_lg .register button:hover{
+    background-color: #16d500;
+    cursor: pointer;
+}
+
+/* Footer Login Page */
+
+#foot_lg{
+    display: flex;
+    width: 100%;
+    background-color: #000;
+    margin-top: 100px;
+    color: #fff;
+    
+    
+}
+#foot_lg .foot_content{
+    width: 300px;
+    margin-left: 120px;
+    margin-bottom: 20px;
+}
+#foot_lg .foot_content img{
+    height: 93px;
+    width: 160px;
+    object-fit: contain;
+   
+   
+}
+
+#foot_lg .foot_content h3{
+    margin-top: -20px;
+}
+
+
+#foot_lg .foot_content a{
+   font-size: 14px;
+   margin-left: 5px;
+    text-decoration: underline;
+}
+#foot_lg .foot_content a:hover{
+    text-decoration: none;
+    color: #01904A;
+}
+
+#foot_lg .foot_intro{
+    color: #fff;
+    width: 750px;
+    text-align: right;
+    margin-left: 180px;
+    margin-top: 20px;
+}
+#foot_lg .foot_intro p{
+    margin-top: 5px;
+    font-size: 14px;
+}

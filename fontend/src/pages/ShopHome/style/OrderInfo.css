@@ -1,0 +1,115 @@
+#OrderInfo{
+    margin-left: 320px;
+    width: 1200px;
+    display: flex;
+    padding-top: 93px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 1px;
+    
+}
+.buttons i{
+    margin-right: 5px;
+}
+ .buttons a{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 40px;
+    font-size: 18px;
+    height: 35px;
+    width: 120px;
+    padding: 5px 5px;
+    background-color: #ff2007; 
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    filter: drop-shadow(1px 5px 1px #861306);
+    outline: none;
+    transition: filter 0.15s ease-in-out;  
+    align-items: center;
+}
+.button_back a:active{
+    filter: none;
+}
+
+.buttons button{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-top: 40px;
+    font-size: 18px;
+    height: 35px;
+    width: 180px;
+    outline: none;
+    border: none;
+    padding: 5px 5px;
+    background-color: #07ff20; 
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    filter: drop-shadow(1px 5px 1px #158606);
+    transition: filter 0.15s ease-in-out;  
+    align-items: center;
+} 
+.buttons button:active{
+    filter: none;
+}
+
+#OrderInfo .DH_GH{
+    flex:1; 
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    border-right: 1px solid #ccc;
+
+}
+
+.DH_GH h2{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+#OrderInfo  .group_info{
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-left: 50px;
+   
+}
+.group_info p{
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 35px;
+}
+.group_info input{
+    height:35px ;
+    width: 250px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+    
+}
+
+#OrderInfo .SP{
+    flex: 1;
+ 
+}
+.SP h2{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.SP .list_SP{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 25px;
+    
+    
+}

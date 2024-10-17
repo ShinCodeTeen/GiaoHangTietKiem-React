@@ -1,0 +1,267 @@
+CREATE TABLE UserAccount(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    userid varchar(20),
+    ten varchar(100),
+    cccd varchar(20),
+    email varchar(100),
+    sdt varchar(15),
+    password varchar(50),
+    diachi varchar(150),
+    type int,
+    trangthai int
+)
+
+CREATE TABLE KhachHang (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  cusID VARCHAR(255) NOT NULL,
+  ten VARCHAR(255) NOT NULL,
+  sdt VARCHAR(20) NOT NULL,
+  diachi TEXT
+);
+
+CREATE TABLE DonDangKi (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  ten VARCHAR(255) NOT NULL,
+  cccd VARCHAR(20) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  sdt VARCHAR(20) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  diachi TEXT,
+  trangthai ENUM('Chờ duyệt', 'Đã duyệt', 'Từ chối') DEFAULT 'Chờ duyệt'
+);
+
+CREATE TABLE DonHang (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  mavandon VARCHAR(15) NOT NULL,
+  mashop VARCHAR(15) NOT NULL,
+  mashipper VARCHAR(15),
+  tenkh VARCHAR(105) NOT NULL,
+  sdt VARCHAR(20) NOT NULL,
+  diachi TEXT,
+  loaidon VARCHAR(255) NOT NULL,
+  htgiao VARCHAR(255) NOT NULL,
+  phiship INT not null
+  tongtien Int NOT NULL,
+  trangthai ENUM('1', '0', '-1') DEFAULT '1'
+);
+
+CREATE TABLE SanPham (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  mavandon VARCHAR(15) NOT NULL,
+  ten VARCHAR(255) NOT NULL,
+  kl INT NOT NULL,
+  sl INT NOT NULL,
+  gia INT NOT NULL
+);
+
+------------------------------------Data--------------------------------------------
+INSERT INTO `useraccount`( `userid`, `ten`, `email`, `sdt`, `password`, `diachi`, `type`, `trangthai`) VALUES ('shop145H7N','PetToyStore','petstore0123@gmail.com','0357874912','12345','Binh Dinh, Yen Lac, Vinh Phuc',0,1)
+CREATE TABLE `AdminAccount` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(20) NOT NULL,
+  `password` VARCHAR(25) NOT NULL,
+  `ten` VARCHAR(105) NOT NULL,
+  `chucvu` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+-------------------------------------------Procedure--------------------------------
+
+DELIMITER //
+
+CREATE PROCEDURE InsertDonHang(
+    IN p_mavandon VARCHAR(15),
+    IN p_mashop VARCHAR(15),
+  
+    IN p_tenkh VARCHAR(105),
+    IN p_sdt VARCHAR(255),
+    IN p_diachi TEXT,
+    IN p_loaidon VARCHAR(255),
+    IN p_htgiao VARCHAR(255),
+    IN p_phiship INT,
+    IN p_tongtien INT  
+)
+BEGIN
+    DECLARE duplicate_mavandon CONDITION FOR SQLSTATE '45000';  -- Custom error condition
+
+    IF EXISTS (SELECT 1 FROM DonHang WHERE mavandon = p_mavandon) THEN
+        SIGNAL duplicate_mavandon SET MESSAGE_TEXT = 'Mã vận đơn đã tồn tại.';
+    END IF;
+
+    INSERT INTO DonHang (mavandon, mashop,  tenkh, sdt, diachi, loaidon, htgiao, phiship, tongtien)
+    VALUES (p_mavandon, p_mashop, p_tenkh, p_sdt, p_diachi, p_loaidon, p_htgiao, p_phiship, p_tongtien);
+
+    SELECT LAST_INSERT_ID() AS inserted_id;
+END //
+
+DELIMITER ;
+
+
+----UpdateOrder---
+DELIMITER //
+
+CREATE PROCEDURE UpdateDonHang(
+    IN p_mavandon VARCHAR(15),
+    IN p_ten VARCHAR(105),
+    IN p_sdt VARCHAR(20),
+    IN p_diachi TEXT
+)
+BEGIN
+    UPDATE DonHang 
+    SET tenkh = p_ten, 
+        sdt = p_sdt, 
+        diachi = p_diachi
+    WHERE mavandon = p_mavandon;
+
+    -- Trả về thông tin về dòng đã được cập nhật
+    SELECT * FROM DonHang WHERE mavandon = p_mavandon; 
+    
+END //
+
+DELIMITER ; 
+
+---Insert sanpham--
+DELIMITER //
+
+CREATE PROCEDURE InsertSanPham(
+    IN p_mavandon VARCHAR(15),
+    IN p_ten VARCHAR(255),
+    IN p_kl Float,
+    IN p_sl INT,
+    IN p_gia INT
+    
+)
+BEGIN
+    INSERT INTO sanpham (mavandon, ten, kl, sl, gia)
+    VALUES (p_mavandon, p_ten, p_kl, p_sl,p_gia);
+
+    SELECT LAST_INSERT_ID() AS inserted_id;
+END //
+
+
+DELIMITER ;
+
+---Insert account user----
+DELIMITER //
+
+CREATE PROCEDURE InsertAccount(
+    IN p_userid VARCHAR(15),
+    IN p_ten VARCHAR(15),
+    IN p_cccd VARCHAR(15),
+    IN p_email VARCHAR(255),
+    IN p_sdt TEXT,
+    IN p_password VARCHAR(255),
+    IN p_diachi VARCHAR(255),
+    IN p_type INT
+)
+BEGIN
+    DECLARE duplicate_mavandon CONDITION FOR SQLSTATE '45000'; 
+
+    IF EXISTS (SELECT 1 FROM useraccount WHERE userid = p_userid) THEN
+        SIGNAL duplicate_mavandon SET MESSAGE_TEXT = 'Tài khoản đã tồn tại.';
+    END IF;
+
+    INSERT INTO useraccount (userid, ten, cccd, email, sdt, password, diachi,type)
+    VALUES (p_userid, p_ten, p_cccd, p_email, p_sdt, p_password, p_diachi,p_type);
+
+    SELECT LAST_INSERT_ID() AS inserted_id;
+END //
+
+DELIMITER ;
+------SuspendUser-------
+DELIMITER //
+
+CREATE PROCEDURE SuspendUser(
+    IN p_userid VARCHAR(20),
+    IN p_status INT
+)
+BEGIN
+    UPDATE useraccount 
+    SET trangthai = p_status
+    WHERE userid = p_userid;
+
+    -- Trả về thông tin về dòng đã được cập nhật
+    SELECT * FROM DonHang WHERE userid = p_userid; 
+    
+END //
+
+DELIMITER ; 
+
+-----InsertShipRegister------
+DELIMITER //
+
+CREATE PROCEDURE InsertShipRegister(
+    IN p_ten VARCHAR(255),
+    IN p_cccd VARCHAR(20),
+    IN p_email VARCHAR(255),
+    IN p_sdt VARCHAR(20),
+    IN p_password VARCHAR(255),
+    IN p_diachi TEXT
+)
+BEGIN
+    INSERT INTO dondangki (ten, cccd, email, sdt, password, diachi)
+    VALUES (p_ten, p_cccd, p_email, p_sdt, p_password, p_diachi);
+
+    SELECT LAST_INSERT_ID() AS inserted_id;
+END //
+
+DELIMITER ;
+
+
+----UpdateRegister-----
+DELIMITER //
+
+CREATE PROCEDURE UpdateRegister(
+    IN p_id INT,
+    IN p_trangthai TEXT
+)
+BEGIN
+    UPDATE dondangki 
+    SET trangthai = p_trangthai 
+       
+    WHERE id = p_id;
+
+   
+    SELECT * FROM DonHang WHERE id = p_id; 
+    
+END //
+
+DELIMITER ; 
+----Delete Order------
+DELIMITER //
+
+CREATE PROCEDURE DeleteDonHang(IN p_mavandon Text)
+BEGIN
+    DECLARE v_donhang_exists INT;
+    SELECT COUNT(*) INTO v_donhang_exists FROM donhang WHERE mavandon = p_mavandon;
+
+    IF v_donhang_exists > 0 THEN
+        BEGIN 
+            DELETE FROM donhang WHERE mavandon = p_mavandon;
+            SELECT ROW_COUNT() INTO @rows_affected;
+            SELECT 1 as 'status', 'Xóa đơn hàng thành công' as 'message';
+        END; 
+    ELSE
+        BEGIN
+            SELECT 0 as 'status', 'Không tìm thấy đơn hàng' as 'message';
+        END; 
+    END IF;
+
+END //
+
+DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
