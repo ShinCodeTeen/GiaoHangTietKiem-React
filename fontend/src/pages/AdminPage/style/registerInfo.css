@@ -1,0 +1,71 @@
+#RegisterInfo{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+ 
+    margin-left: 320px;
+    width: 1210px;
+    padding-left: 20px;
+    padding-top: 93px;
+}
+#RegisterInfo .group_info{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+    width:600px;
+}
+
+#RegisterInfo .group_info p{
+    line-height: 35px;
+    display: flex;
+}
+#RegisterInfo .group_info input{
+    width: 500px;
+    height: 35px;
+    border: 1px solid #ccc;
+    line-height: 30px;
+    padding-left: 10px;
+    font-size: 20px;
+
+    
+}
+#RegisterInfo .group_info input:focus{
+    outline: 1px solid rgb(3, 243, 3);
+}
+#RegisterInfo .bt{
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-left: -120px;
+}
+#RegisterInfo button{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    outline: none;
+    margin-left: 200px;
+    border: none;
+    transition: filter 0.15s ease-in-out; 
+}
+
+#RegisterInfo .bt .tuchoi{
+    background-color: rgb(243, 27, 3);
+    filter: drop-shadow(1px 5px 1px rgb(128, 2, 0));
+
+}
+#RegisterInfo .bt .duyet{
+    background-color: rgb(3, 243, 3);
+    filter: drop-shadow(1px 5px 1px green);
+}
+#RegisterInfo  .tuchoi:active{
+    filter: none;
+}
+#RegisterInfo  .duyet:active{
+    filter: none;
+}

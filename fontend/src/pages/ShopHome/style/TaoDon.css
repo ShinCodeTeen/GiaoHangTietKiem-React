@@ -1,0 +1,211 @@
+
+#TaoDon{
+    display: flex;
+    position: fixed;
+    height: 98vh;
+    width: 95vw;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Sử dụng z-index cao hơn header và sidebar */
+    z-index: 100; 
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    
+}
+#TaoDon .button_huy,.button_tao{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: fit-content; 
+    margin-top:20px;
+    width: 100%;
+
+}
+
+#TaoDon .button_tao button{
+    margin-right: 200px;
+    background-color:rgb(3, 243, 3);
+    filter: drop-shadow(1px 5px 1px green);
+    transition: filter 0.15s ease-in-out; 
+}
+#TaoDon .button_huy button{
+    margin-right: 200px;
+    transition: filter 0.15s ease-in-out;
+}
+#TaoDon .button_huy button:active{
+    filter: none;
+}
+#TaoDon .button_tao button:active{
+    filter: none;
+}
+#TaoDon .Customer{
+    flex: 1; 
+    padding: 10px; 
+    border-right: 1px solid #ccc; 
+  }
+
+#TaoDon .Product {
+    flex: 1; 
+    padding: 10px; 
+    border-left: 1px solid #ccc; 
+}
+
+#TaoDon .section_info input{
+    width: 90%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none; 
+    outline: none; 
+    box-shadow: 0 1px 0 #000; 
+    font-size: 15px;
+    padding-left: 5px;
+  
+}
+#TaoDon .section_info i{
+    font-size: 20px;
+    padding-right: 10px;
+    position: relative;
+    top: 10px;
+}
+#TaoDon .section_ship{
+    margin-top: 10px;
+}
+#TaoDon .section_ship .form-group{
+    margin-top: 10px;
+}
+#TaoDon .section_ship input{
+    transform: scale(1.4);
+    transform-origin: center center;
+    accent-color:#01904A ;
+}
+
+#TaoDon .section_ship svg{
+    color:#01904A;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#TaoDon .section_getOrder{
+    margin-top: 10px;
+}
+#TaoDon .section_getOrder .form-group{
+    margin-top: 10px;
+}
+#TaoDon .section_getOrder input{
+    transform: scale(1.4);
+    transform-origin: center center;
+    accent-color:#01904A ;
+    margin-right:10px ;
+}
+
+
+
+#TaoDon .Product{
+
+}
+.Product .add_prd{
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+#TaoDon .Product i{
+    background-color: rgb(3, 243, 3);
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 20px;
+    filter: drop-shadow(1px 5px 1px green);
+    outline: none;
+    margin-left: 200px;
+    border: none;
+    transition: filter 0.15s ease-in-out; /* Thêm transition cho filter */
+}
+#TaoDon .Product i:active{
+    filter: none;
+}
+
+#TaoDon .custom_info {
+    width: 100%;
+    height: 120px;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-wrap: wrap; 
+    margin-top: 10px;
+    
+}
+#TaoDon .custom_info .info_product{
+    margin-left: 25px;
+    align-items: center;
+  
+}
+.custom_info .info_product input{
+    height: 35px;
+    padding-left: 10px;
+}
+
+#TaoDon .name_product{
+    width: 100%;
+    height: 50px;
+    background-color:#fff;
+    align-items: center;
+
+}
+#TaoDon .name_product input{
+    width: 80%;
+    margin-left: 5%;
+    height: 95%;
+    border: none;
+    outline: none; 
+    box-shadow: 0 1px 0 #000; 
+
+}
+#TaoDon .name_product i{
+    margin-left: 40px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    align-items: center;
+    padding: 7px;
+    background-color: red;
+    filter: drop-shadow(1px 5px 1px #871C10);
+    transform: translateY(30px); /* Moves 5 pixels upwards */
+}
+
+
+#TaoDon .total_info{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+#TaoDon .total_info .group_disenable,.group_enable{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding:10px 20px;
+
+}
+
+.total_info .group_disenable input{
+    border: none;
+    text-align: center;
+    outline: none;
+}
+.total_info .group_enable input{
+    border: none;
+    box-shadow: 0 1px 0 #000; 
+    text-align: center;
+    outline: none;
+}
